@@ -4,6 +4,7 @@
  */
 import express from 'express';
 import { graphiqlExpress, graphqlExpress } from 'graphql-server-express';
+import cors from 'cors'
 
 import schema from './schemas';
 
@@ -18,6 +19,12 @@ export function InitServer() {
      * Middlewere
      */
     server.use(express.json())
+
+    server.use(express.urlencoded({ // url encoded body parser
+      extended: true
+    }))
+
+    server.use(cors('*'))
 
     if (dev) {
       server.use('/api', graphiqlExpress({
