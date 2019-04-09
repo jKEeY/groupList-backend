@@ -31,7 +31,6 @@ export default new GraphQLObjectType({
     groupList: {type: new GraphQLNonNull(new GraphQLList(groupListType)), async resolve(day) { 
       const names = await GroupListSchema.find({});
       names.forEach((i) => {
-        console.log(day._id)
         i['date_id'] = day._id.toString();
       })
       return names;

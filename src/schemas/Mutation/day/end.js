@@ -22,7 +22,6 @@ export default {
         if (data) return true
         else return false
       })
-    console.log(result)
     return typeof result === 'undefined' ? false : result;
   }
 }
